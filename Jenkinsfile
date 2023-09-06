@@ -14,6 +14,7 @@ pipeline {
         stage('package') {
             steps {
                 ./mnnw package
+                archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
         stage('deploy') {
