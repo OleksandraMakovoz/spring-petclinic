@@ -3,23 +3,23 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                ./mnnw clean compile validate
+                sh "./mnnw clean compile validate"
             }
         }
         stage('test') {
             steps {
-                ./mnnw test
+                sh "./mnnw test"
             }
         }
         stage('package') {
             steps {
-                ./mnnw package
+                sh "./mnnw package"
                 archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
         stage('deploy') {
             steps {
-                 java -jar -Dspring.profiles.active=mysql target/*.jar
+                 sh "java -jar -Dspring.profiles.active=mysql target/*.jar"
             }
         }
     }
