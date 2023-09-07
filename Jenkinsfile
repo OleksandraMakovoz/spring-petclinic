@@ -5,17 +5,17 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "./mnnw clean compile validate"
+                sh "./mvnw clean compile validate"
             }
         }
         stage('test') {
             steps {
-                sh "./mnnw test"
+                sh "./mvnw test"
             }
         }
         stage('package') {
             steps {
-                sh "./mnnw package"
+                sh "./mvnw package"
                 archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
