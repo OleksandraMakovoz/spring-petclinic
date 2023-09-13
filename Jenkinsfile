@@ -1,8 +1,14 @@
 pipeline {
-    agent {
-        label 'ubuntu'
-    }
-    stages {
+     agent any
+     tools {
+       jdk 'jdk11'
+     }
+     stages {
+       stage('Cloning Git') {
+         steps {
+           git 'https://github.com/talitz/spring-petclinic-jenkins-pipeline.git'
+         }
+       }
         stage('build') {
             steps {
                 sh "./mvnw clean compile validate"
