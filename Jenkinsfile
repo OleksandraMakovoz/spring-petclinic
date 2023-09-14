@@ -3,7 +3,11 @@ pipeline {
      stages {
        stage('Cloning Git') {
          steps {
-           git 'https://github.com/OleksandraMakovoz/spring-petclinic.git', 'main'
+           git(
+            url: 'https://github.com/OleksandraMakovoz/spring-petclinic.git',
+            branch: 'main'
+
+           )
          }
        }
         stage('build') {
