@@ -1,6 +1,11 @@
 pipeline {
      agent any
      stages {
+       stage('Echo') {
+        steps {
+            sh 'echo ${MYSQL_URL}'
+        }
+       }
        stage('Cloning Git') {
          steps {
            git(
