@@ -37,7 +37,7 @@ pipeline {
         archiveArtifacts artifacts: '**/target/*.jar'
       }
     }
-    stage('deploy') {
+    stage('Deploy') {
         steps {
             sh "java -jar -Dspring.profiles.active=mysql target/*.jar"
         }
