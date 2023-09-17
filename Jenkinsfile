@@ -25,7 +25,7 @@ pipeline {
         }
         stage('package') {
             steps {
-                sh "./mvnw package -Dspring.profiles.active=mysql -DskipTests"
+                sh "./mvnw package -DskipTests"
                 archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
