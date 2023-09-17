@@ -4,9 +4,6 @@ pipeline {
        stage('Echo') {
         steps {
             withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb',
-                 naming: 'relative',
-                 path: '/mysql/url',
-                 recursive: true,
                  regionName: 'eu-north-1') {
                           echo MYSQL_URL
                  }
