@@ -8,7 +8,7 @@ pipeline {
                  path: '/mysql',
                  recursive: true,
                  regionName: 'eu-north-1') {
-                          sh 'echo ${MYSQL_URL}'
+                          echo MYSQL_URL
                  }
             }
        }
