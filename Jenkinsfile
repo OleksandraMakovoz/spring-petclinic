@@ -3,8 +3,11 @@ pipeline {
      stages {
        stage('Echo') {
         steps {
-            sh 'echo ${MYSQL_URL}'
-        }
+            withAWSParameterStore(credentialsId: '362447113011',
+                 regionName: 'eu-north-1') {
+                          sh 'echo ${MYSQL_URL}'
+                 }
+            }
        }
        stage('Cloning Git') {
          steps {
