@@ -22,7 +22,9 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh "./mvnw test"
+                timeout(time: 1, unit: 'HOURS') {
+                   sh "./mvnw test"
+               }
             }
         }
         stage('package') {
