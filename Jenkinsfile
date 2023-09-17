@@ -3,7 +3,7 @@ pipeline {
      stages {
        stage('Echo ENV') {
         steps {
-            withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb') {
+            withAWSParameterStore(credentialsId: 'AKIAVIY4IBMZ6CNEASEZ') {
                           echo sh(script: 'env|sort', returnStdout: true)
                  }
             }
