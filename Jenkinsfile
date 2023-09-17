@@ -21,21 +21,21 @@ pipeline {
            )
          }
        }
-//         stage('build') {
-//             steps {
-//                 sh "./mvnw clean compile validate"
-//             }
-//         }
-//         stage('package') {
-//             steps {
-//                 sh "./mvnw package -DskipTests"
-//                 archiveArtifacts artifacts: '**/target/*.jar'
-//             }
-//         }
-//         stage('deploy') {
-//             steps {
-//                  sh "java -jar -Dspring.profiles.active=mysql target/*.jar"
-//             }
-//         }
+        stage('build') {
+            steps {
+                sh "./mvnw clean compile validate"
+            }
+        }
+        stage('package') {
+            steps {
+                sh "./mvnw package -DskipTests"
+                archiveArtifacts artifacts: '**/target/*.jar'
+            }
+        }
+        stage('deploy') {
+            steps {
+                 sh "java -jar -Dspring.profiles.active=mysql target/*.jar"
+            }
+        }
     }
 }
