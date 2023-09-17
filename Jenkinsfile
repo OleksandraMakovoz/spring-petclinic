@@ -4,9 +4,7 @@ pipeline {
        stage('Echo') {
         steps {
             script {
-            withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb',
-                namePrefixes: 'MYSQL',
-                 regionName: 'eu-north-1') {
+            withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb') {
                           echo sh(script: 'env|sort', returnStdout: true)
                  }
                }
