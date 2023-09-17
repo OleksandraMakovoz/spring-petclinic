@@ -4,10 +4,12 @@ pipeline {
        stage('Echo') {
         steps {
             script {
-            withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb') {
+            withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb',
+                path: '/mysql/'
+                 regionName: 'eu-north-1') {
                           echo sh(script: 'env|sort', returnStdout: true)
                  }
-               }
+            }
             }
        }
        stage('Cloning Git') {
