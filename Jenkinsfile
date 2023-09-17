@@ -20,13 +20,6 @@ pipeline {
                 sh "./mvnw clean compile validate"
             }
         }
-        stage('test') {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                   sh "./mvnw test"
-               }
-            }
-        }
         stage('package') {
             steps {
                 sh "./mvnw package"
