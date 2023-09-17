@@ -4,26 +4,6 @@ pipeline {
   }
   agent any
   stages {
-    stage('Cloning Git') {
-      steps {
-         git(
-            url: 'https://github.com/OleksandraMakovoz/spring-petclinic.git',
-            branch: 'main'
-         )
-      }
-    }
-    stage('Build Application') {
-      steps {
-        echo '=== Building Petclinic Application ==='
-        sh './mvnw -B -DskipTests clean package'
-        archiveArtifacts artifacts: '**/target/*.jar'
-      }
-        post {
-          always {
-            junit 'target/surefire-reports/*.xml'
-          }
-        }
-    }
     stage('Echo') {
       steps {
         script {
@@ -35,11 +15,26 @@ pipeline {
             }
           }
         }
-      }
-    stage('deploy') {
-        steps {
-            sh "java -jar -Dspring.profiles.active=mysql target/*.jar"
-        }
     }
-   }
+//     stage('Cloning Git') {
+//       steps {
+//          git(
+//             url: 'https://github.com/OleksandraMakovoz/spring-petclinic.git',
+//             branch: 'main'
+//          )
+//       }
+//     }
+//     stage('Build Application') {
+//       steps {
+//         echo '=== Building Petclinic Application ==='
+//         sh './mvnw -B -DskipTests clean package'
+//         archiveArtifacts artifacts: '**/target/*.jar'
+//       }
+//     }
+//     stage('deploy') {
+//         steps {
+//             sh "java -jar -Dspring.profiles.active=mysql target/*.jar"
+//         }
+//     }
+  }
 }
