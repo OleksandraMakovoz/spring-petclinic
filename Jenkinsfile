@@ -3,7 +3,7 @@ pipeline {
      stages {
        stage('Echo') {
         steps {
-            withAWSParameterStore(credentialsId: '362447113011',
+            withAWSParameterStore(credentialsId: 'f41c8ac0-f1ee-4a07-8bbb-1b014d174bfb',
                  regionName: 'eu-north-1') {
                           sh 'echo ${MYSQL_URL}'
                  }
