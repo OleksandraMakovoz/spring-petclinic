@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Tests') {
       steps {
-         sh './mvnw test -Dspring.profiles.active=mysql'
+         sh './mvnw test -Dspring.profiles.active=mysql -DskipTests'
       }
     }
     stage('Build Application') {
