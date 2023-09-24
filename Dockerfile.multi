@@ -1,0 +1,18 @@
+FROM maven:3.9.4-eclipse-temurin-17-alpine AS base
+WORKDIR /app
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN mvn dependency:resolve
+COPY src ./src
+
+FROM base AS development
+CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.profiles=mysql", "-Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000'"]
+
+FROM base AS build
+RUN mvn package
+
+
+FROM eclipse-temurin:17-jre-jammy AS production
+EXPOSE 8080
+COPY --from=build /app/target/spring-petclinic-*.jar /spring-petclinic.jar
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=mysql", "-jar", "/spring-petclinic.jar"]
