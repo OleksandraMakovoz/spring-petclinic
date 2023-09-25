@@ -16,6 +16,8 @@
 
 package org.springframework.samples.petclinic;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportRuntimeHints;
@@ -29,8 +31,12 @@ import org.springframework.context.annotation.ImportRuntimeHints;
 @SpringBootApplication
 @ImportRuntimeHints(PetClinicRuntimeHints.class)
 public class PetClinicApplication {
+	private static final Log log = LogFactory.getLog(PetClinicApplication.class);
 
 	public static void main(String[] args) {
+		log.fatal("!!!!!!!!!!!!!!!!");
+		log.fatal(System.getenv());
+		log.fatal("!!!!!!!!!!!!!!!!");
 		SpringApplication.run(PetClinicApplication.class, args);
 	}
 
