@@ -31,6 +31,7 @@ import org.springframework.context.annotation.ImportRuntimeHints;
 @SpringBootApplication
 @ImportRuntimeHints(PetClinicRuntimeHints.class)
 public class PetClinicApplication {
+
 	private static final Log log = LogFactory.getLog(PetClinicApplication.class);
 
 	public static void main(String[] args) {
