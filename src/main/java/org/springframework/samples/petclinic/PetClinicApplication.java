@@ -35,9 +35,6 @@ public class PetClinicApplication {
 	private static final Log log = LogFactory.getLog(PetClinicApplication.class);
 
 	public static void main(String[] args) {
-		log.fatal("!!!!!!!!!!!!!!!!");
-		log.fatal(System.getenv());
-		log.fatal("!!!!!!!!!!!!!!!!");
 		SpringApplication.run(PetClinicApplication.class, args);
 	}
 
